@@ -20,7 +20,6 @@ export class TodoItem extends React.Component {
     
     handleInputChange(event) {
         const value = event.target.value;
-        const name = event.target.name;
 
         if (value && this.state.isDone) {
             this.setState({isDone: false});
@@ -32,6 +31,7 @@ export class TodoItem extends React.Component {
     render () {
         return (
             <li className='TodoItem' onClick={this.handleClick}>
+                <input type="checkbox" name="checkbox_todo" checked={this.state.isDone} onChange={this.handleInputChange}/>
                 {
                     (this.state.isDone) ? (
                         <s>{this.state.title}</s>
@@ -39,7 +39,6 @@ export class TodoItem extends React.Component {
                         <span>{this.state.title}</span>
                     )
                 }
-                <input type="checkbox" name="checkbox_todo" checked={this.state.isDone} onChange={this.handleInputChange}/>
             </li>
         );
     }
