@@ -2,25 +2,19 @@ import React from 'react';
 import {TodoItem} from "./TodoItem"
 
 export class TodoList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-            <ul>
-                {[ {
-                        "title": "send an email to kevyn",
-                        "isDone":true
-                    } , {
-                        "title": "finish conception step",
-                        "isDone":false
-                    } , {
-                        "title": "doo the evalbox test",
-                        "isDone":false
-                    }
-                ].map((item) => <TodoItem key={item.title} title={item.title} isDone={item.isDone}/>)}
-            </ul>
+            <div>
+                            {
+                (this.props.todolist.length === 0) ? (
+                    <p>No todo saved.</p>
+                ) : (
+                    <ul>
+                        {this.props.todolist.map((item, index) => <TodoItem key={`${item.title}_${index}`} title={item.title} isDone={item.isDone}/>)}
+                    </ul>
+                )
+            }
+            </div>
         );
     }
 }
